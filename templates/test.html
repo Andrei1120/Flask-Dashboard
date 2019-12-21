@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CMI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
+</head>
+
+<body>
+    {% include 'includes/_navbar.html' %}
+    
+    {# <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> #}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table-locale-all.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/export/bootstrap-table-export.min.js"></script>
+    
+    <table
+        id="table"
+        data-search="true"
+        data-custom-search="customSearch"
+        data-pagination="true"
+        data-page-list="[10, 25, 50, 100, all]">
+        <thead>
+            <tr>
+            <th data-field="id">ID</th>
+            <th data-field="name">Name</th>
+            <th data-field="address">Address</th>
+            <th data-field="email">Email</th>
+            <th data-field="phone">Phone</th>
+            <th data-field="type">Type</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script>
+        var $table = $('#table')
+        var data = []
+
+        function detailFormatter(index, row) {
+            var html = []
+            $.each(row, function (key, value) {
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>')
+            })
+            return html.join('')
+        }
+
+        function initTable() {
+            $table.bootstrapTable('destroy').bootstrapTable({
+            height: 550,
+            locale: "en-US",
+            data: data,
+            columns: [
+                [{
+                title: 'ID',
+                field: 'id',
+                align: 'center',
+                }, {
+                field: 'name',
+                title: 'Name',
+                align: 'center'
+                }, {
+                field: 'address',
+                title: 'Address',
+                align: 'center',
+                }, {
+                field: 'email',
+                title: 'Email',
+                align: 'center',
+                }, {
+                field: 'phone',
+                title: 'Phone',
+                align: 'center',
+                }, {
+                field: 'type',
+                title: 'Type',
+                align: 'center',
+                }]
+            ]
+            })
+            $table.on('check.bs.table uncheck.bs.table ' +
+            'check-all.bs.table uncheck-all.bs.table',
+            function () {
+
+            })
+            $table.on('all.bs.table', function (e, name, args) {
+                console.log(name, args)
+            })            
+        }
+
+        $(function() {
+            data = [
+            {
+                'id': 1,
+                'name': 'Andrei',
+                'address': 'Vladivostok',
+                'email': 'andrei1120@outlook.com',
+                'phone': '123456',
+                'type': 'seller'
+            },
+            {
+                'id': 2,
+                'name': 'Maxim',
+                'address': 'Kyiv',
+                'email': 'maxim@hotmail.com',
+                'phone': '39453',
+                'type': 'buyer'
+            },
+            {
+                'id': 3,
+                'name': 'William',
+                'address': 'London',
+                'email': 'william@gmail.com',
+                'phone': '94543',
+                'type': 'seller'
+            },
+            {
+                'id': 4,
+                'name': 'Smith',
+                'address': 'New york',
+                'email': 'smith@yahoo.com',
+                'phone': '55555',
+                'type': 'buyer'
+            },
+            {
+                'id': 5,
+                'name': 'Jack',
+                'address': 'Canada',
+                'email': 'jack@gmail.com',
+                'phone': '845346',
+                'type': 'seller'
+            },
+            {
+                'id': 6,
+                'name': 'Jack',
+                'address': 'Canada',
+                'email': 'jack@gmail.com',
+                'phone': '845346',
+                'type': 'seller'
+            },
+            {
+                'id': 7,
+                'name': 'Jack',
+                'address': 'Canada',
+                'email': 'jack@gmail.com',
+                'phone': '845346',
+                'type': 'seller'
+            },
+            {
+                'id': 8,
+                'name': 'Jack',
+                'address': 'Canada',
+                'email': 'jack@gmail.com',
+                'phone': '845346',
+                'type': 'seller'
+            },
+            {
+                'id': 9,
+                'name': 'Jack',
+                'address': 'Canada',
+                'email': 'jack@gmail.com',
+                'phone': '845346',
+                'type': 'seller'
+            },
+            {
+                'id': 10,
+                'name': 'Jack',
+                'address': 'Canada',
+                'email': 'jack@gmail.com',
+                'phone': '845346',
+                'type': 'seller'
+            },
+            {
+                'id': 11,
+                'name': 'Jack',
+                'address': 'Canada',
+                'email': 'jack@gmail.com',
+                'phone': '845346',
+                'type': 'seller'
+            },
+            {
+                'id': 12,
+                'name': 'Jack',
+                'address': 'Canada',
+                'email': 'jack@gmail.com',
+                'phone': '845346',
+                'type': 'seller'
+            }]
+            initTable()
+        })
+
+        function customSearch(data, text) {
+            return data.filter(function (row) {
+                var res = text.split(":");
+                var flag = true
+                for(i=0; i<res.length; i++)
+                {
+                    if(row.name.indexOf(res[i]) > -1 || 
+                       row.address.indexOf(res[i]) > -1 || 
+                       row.email.indexOf(res[i]) > -1 || 
+                       row.phone.indexOf(res[i]) > -1 || 
+                       row.type.indexOf(res[i]) > -1)
+                        flag = flag && true
+                    else
+                        flag = flag && false
+                }
+                return flag
+            })
+        }
+    </script>
+</body>
+</html>
+
+    

@@ -1,0 +1,128 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table-locale-all.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/export/bootstrap-table-export.min.js"></script>
+
+    <div class="header">
+        <span>This is <font color="yellow">Dashboard</font></span>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-5">
+                <div class="row">
+                    <div class="col-md-7 col-7">
+                        <img src="daily.png"/>
+                    </div>
+                    <div class="col-md-3 col-3 counter">
+                        <span>{{daycount}}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7 col-7">
+                        <img src="monthly.png"/>
+                    </div>
+                    <div class="col-md-3 col-3 counter">
+                        <span>{{monthcount}}</span>
+                    </div>                                        
+                </div>
+                <div class="row">
+                    <div class="col-md-7 col-7">
+                        <img src="yearly.png"/>
+                    </div>
+                    <div class="col-md-3 col-3 counter">
+                        <span>{{yearcount}}</span>
+                    </div>                   
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-7">
+                {# <div class="row">
+                    <div class="col-md-2 col-4">
+                        <input type="radio" id="all" name="radio-group" checked>
+                        <label for="all">All</label>
+                    </div>
+                    <div class="col-md-2 col-4">
+                        <input type="radio" id="buyer" name="radio-group">
+                        <label for="buyer">Buyer</label>
+                    </div>
+                    <div class="col-md-2 col-4">
+                        <input type="radio" id="seller" name="radio-group">
+                        <label for="seller">Seller</label>
+                    </div>
+                </div> #}
+                <div class="row">
+                    <table
+                        id="table"
+                        data-search="true"
+                        data-custom-search="customSearch"
+                        data-pagination="true"
+                        data-page-list="[10, 25, 50, 100, all]">
+                        <thead>
+                            <tr>
+                                <th data-field="id" data-halign="center">ID</th>
+                                <th data-field="name" data-halign="center">Name</th>
+                                <th data-field="address" data-halign="center">Address</th>
+                                <th data-field="email" data-halign="center">Email</th>
+                                <th data-field="phone" data-halign="center">Phone</th>
+                                <th data-field="type" data-halign="center">Type</th>
+                            </tr>
+                        </thead>
+                        {% for data in datas %}
+                            <tr>
+                                <td>{{data['id']}}</td>
+                                <td>{{data['name']}}</td>
+                                <td>{{data['address']}}</td>
+                                <td>{{data['email']}}</td>
+                                <td>{{data['phone']}}</td>
+                                <td>{{data['type']}}</td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var $table = $('#table')
+
+        function initTable() {
+            $table.bootstrapTable('destroy').bootstrapTable({
+            height: 550,
+            locale: "en-US",
+            })
+            $table.on('check.bs.table uncheck.bs.table ' +
+            'check-all.bs.table uncheck-all.bs.table',
+            function () {
+
+            })
+            $table.on('all.bs.table', function (e, name, args) {
+                console.log(name, args)
+            })            
+        }
+
+        $(function() {
+            initTable()
+        })
+
+        function customSearch(data, text) {
+            return data.filter(function (row) {
+                var res = text.split(":");
+                var flag = true
+                for(i=0; i<res.length; i++)
+                {
+                    if(row.name.indexOf(res[i]) > -1 || 
+                       row.address.indexOf(res[i]) > -1 || 
+                       row.email.indexOf(res[i]) > -1 || 
+                       row.phone.indexOf(res[i]) > -1 || 
+                       row.type.indexOf(res[i]) > -1)
+                        flag = flag && true
+                    else
+                        flag = flag && false
+                }
+                return flag
+            })
+        }
+    </script>
+{% endblock %}

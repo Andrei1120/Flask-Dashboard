@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="header">
+        <span>Why hang on to a HOUSE that has become a <font color="yellow">Headache?</font></span>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <ul>
+                    <li class='normal'>We Pay CASH and can CLOSE in 14 DAYS</li>
+                    <li class='normal'>We'll PAY OFF mortgages and late taxes</li>
+                    <li class='normal'>We BUY AS-IS- no need to make repairs</li>
+                    <li class='normal'>Get a no obligation CASH OFFER!</li>
+                </ul>
+                <div class="call">
+                    <span>Give me a call today! 561-268-6720</span>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6">
+                <form action="" method="post">
+                {{ form.csrf_token }}
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form.name.label }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-control" style="border: 0px">
+                                {{ form.name(size=64) }}
+                            </div>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form.address.label }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-control" style="border: 0px">
+                                {{ form.address(size=64) }}
+                            </div>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form.email.label }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-control" style="border: 0px">
+                                {{ form.email(size=64) }}
+                            </div>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ form.phone.label }}</label>
+                        <div class="col-sm-10">
+                            <div class="form-control" style="border: 0px">
+                                {{ form.phone(size=64) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-4 col-sm-1 col-md-2">
+                            {{ form.submit() }}
+                        </div>
+                    </div>
+                </form>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    {% if message == 'Success!': %}
+                        <li class='normal'>{{ message }}</li>
+                    {% else: %}
+                        <li class='warning'>{{ message }}</li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

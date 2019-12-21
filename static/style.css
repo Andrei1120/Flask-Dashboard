@@ -1,0 +1,168 @@
+div.header {
+    width: 100%;
+    background: #232426;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+div.header span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 20px 10px;
+}
+
+div.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: #232426;
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+div.footer span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 10px 10px;
+}
+
+div.container {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+ul {
+    -ms-flex-align: center!important;
+    align-items: center!important;
+    display: table;
+    justify-content: center;
+}
+
+ul li.normal {
+    list-style-image: url('check.png');
+    height: 60px;
+    line-height: 60px;
+    color: #01b200;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+ul li.warning {
+    list-style-image: url('check_warning.png');
+    height: 60px;
+    line-height: 60px;
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+div.call {
+    height: 80px;
+    line-height: 70px;
+    color: red;
+    font-style: italic;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    text-align: center;
+}
+
+div.call span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+div.note {
+    line-height: 40px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+div.note span {
+    font-size: 18px;
+    color: #01b200;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+div.counter {
+    width: 100%;
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: #0e1856;
+}
+
+div.counter span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    margin: 20px 0px;
+}
+
+div.bootstrap-table {
+    width: 100%;
+}
+
+
+/* [type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked+label,
+[type="radio"]:not(:checked)+label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #666;
+}
+
+[type="radio"]:checked+label:before,
+[type="radio"]:not(:checked)+label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+}
+
+[type="radio"]:checked+label:after,
+[type="radio"]:not(:checked)+label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #F87DA9;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked)+label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type="radio"]:checked+label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+} */

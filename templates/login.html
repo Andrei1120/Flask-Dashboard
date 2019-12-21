@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class="header">
+        <span>Please try to <font color="yellow">Login</font></span>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-6 col-md-6 col-sm-6 col-lg-6">
+                <form action="" method="post">
+                {{ form.csrf_token }}
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">{{ form.name.label }}</label>
+                        <div class="col-4">
+                            <div class="form-control" style="border: 0px">
+                                {{ form.name(size=40) }}
+                            </div>
+                        </div>
+                    </div>
+                     <div class="form-group row">
+                        <label class="col-2 col-form-label">{{ form.password.label }}</label>
+                        <div class="col-4">
+                            <div class="form-control" style="border: 0px">
+                                {{ form.password(size=40) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center">
+                        <div class="col-4 col-sm-1 col-md-2">
+                            {{ form.submit() }}
+                        </div>
+                    </div>
+                </form>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li class='warning'>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
