@@ -1,14 +1,14 @@
 # [Flask Dashboard]
 
-=>Main functions
-	Flask
-	Mysql
-	Form
-	Session
-	Checking of client's IP
+=>Main functions<br>
+	Flask<br>
+	Mysql<br>
+	Form<br>
+	Session<br>
+	Checking of client's IP<br>
 
-=> This app has 4 pages.
-	Sell
-	Buy
-	Admin
-	Login
+=> This app has 4 pages.<br>
+	Sell<br>
+	Buy<br>
+	Admin<br>
+	Login<br>
